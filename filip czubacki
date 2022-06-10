@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>Page Title</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
+    <script src='main.js'></script>
+</head>
+<input type="date" id="dateInput1" value="2004-09-09">
+    <label>Podaj date:
+      <input type="date" id="dateInput2">
+      
+    </label>
+    <p>
+      <button onclick="roznica()">Sprawdz</button>
+    </p>
+  <h3 style="color:32A80F" id="wynik"></h3>
+  <h2 id="displayDateTime"></h2>
+  <body onload="gettime()">
+    <form name="clockform">
+        <input type="text" name="clock">
+    
+    <script>
+ function roznica() {  
+           
+         var data11 = document.getElementById("dateInput1").value;  
+         var data22 = document.getElementById("dateInput2").value;  
+         var data1 = new Date(data11);  
+         var data2 = new Date(data22);  
+         var czas = data2.getTime() - data1.getTime();  
+         var wynik = czas / (1000 * 60 * 60 * 24);  
+         
+         return document.getElementById("wynik").innerHTML =    
+              wynik + " dni minelo od poprzedniej daty. ";  
+        
+            }
+
+  var today = new Date();
+  var day = today.getDay();
+  var daylist = ["Niedziela","Poniedzialek","Wtorek","Sroda ","Czwartek","Piatek","Sobota"];
+  var date = today.getFullYear()+'-'+(today.getMonth()+1)+'-'+today.getDate();
+  var time = today.getHours() + ":" + today.getMinutes() + ":" + today.getSeconds();
+  var dateTime = date+' '+time;
+  document.getElementById("displayDateTime").innerHTML = dateTime + ' <br> Dzien tygodnia : ' + daylist[day];
+  
+  function gettime() {
+    var date= new Date();
+    var hr = date.getHours();
+    var m = date.getMinutes();
+    var s = date.getSeconds();
+    if(m < 10)
+    {
+        m = "0" + m
+    }
+    if(s < 10)
+    {
+        s = "0" + s
+    }
+    document.clockform.clock.value = hr + ":" + m + ":" + s;
+    setTimeout("gettime()",100)
+}
+
+
+
+
+
+
+
+    </script>
+</body>
+</html>
